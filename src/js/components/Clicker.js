@@ -1,44 +1,31 @@
 import * as React    from 'react';
-import { Component } from 'flumpt';
+import { mixin, Component } from 'flumpt';
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 
-class ClickCounter extends Component {
+const ClickCounter = React.createClass({
 
-  componentDidMount () {
-    console.log('>> mount ClickCounter');
-  }
-
-  componentWillUpdate () {
-    console.log('## update ClickCounter');
-  }
+  mixins: [PureRenderMixin, mixin],
 
   render () {
-    console.log('@@ render ClickCounter');
     return <span>{this.props.counter}</span>;
-  }
+  },
 
-}
+});
 
-class ClickButton extends Component {
+const ClickButton = React.createClass({
 
-  componentDidMount () {
-    console.log('>> mount ClickButton');
-  }
-
-  componentWillUpdate () {
-    console.log('## update ClickButton');
-  }
+  mixins: [PureRenderMixin, mixin],
 
   render () {
-    console.log('@@ render ClickButton');
     return (
       <button
         onClick={() => this.dispatch('increment')}>
         {this.props.button}!
       </button>
     );
-  }
+  },
 
-}
+});
 
 class Clicker extends Component {
 
