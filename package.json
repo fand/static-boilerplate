@@ -1,20 +1,11 @@
 {
   "name": "static-boilerplate",
-  "version": "0.0.1",
   "description": "A static webpage boilerplate for @fand",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "http-server public",
-    "clean": "rm -rf public/js public/css && mkdir public/js public/css",
-    "build-js": "browserify -t babelify src/js/index.js -o public/js/index.js",
-    "watch-js": "watchify -t babelify src/js/index.js -o public/js/index.js",    "build-css": "node-sass -r src/css/index.scss public/css/index.css",
-    "watch-css": "node-sass -w -r src/css/index.scss public/css/index.css",
-    "build": "npm-run-all clean build-js build-css",
-    "watch": "npm-run-all -s clean -p watch-js watch-css serve"
-  },
+  "version": "0.0.1",
   "author": "fand",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fand/static-boilerplate/issues"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^4.1.3",
@@ -28,5 +19,26 @@
     "node-sass": "^3.3.3",
     "npm-run-all": "^1.4.0",
     "watchify": "^3.4.0"
+  },
+  "homepage": "https://github.com/fand/static-boilerplate",
+  "keywords": [
+    "boilerplate"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fand/static-boilerplate.git"
+  },
+  "scripts": {
+    "build": "npm-run-all clean build-js build-css",
+    "build-css": "node-sass -r src/css/index.scss public/css/index.css",
+    "build-js": "browserify -t babelify src/js/index.js -o public/js/index.js",
+    "clean": "rm -rf public/js public/css && mkdir public/js public/css",
+    "serve": "http-server public",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm-run-all -s clean -p watch-js watch-css serve",
+    "watch-css": "node-sass -w -r src/css/index.scss public/css/index.css",
+    "watch-js": "watchify -t babelify src/js/index.js -o public/js/index.js"
   }
 }
