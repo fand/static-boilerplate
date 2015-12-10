@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import App from './components/App';
 
 import logger from './middlewares/logger';
+import { traveler } from './middlewares/traveler';
 
 // Setup renderer
 const app = new App({
@@ -15,6 +16,7 @@ const app = new App({
   },
   middlewares: [
     logger,
+    traveler,
   ]
 });
 

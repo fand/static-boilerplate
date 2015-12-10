@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Flux }   from 'flumpt';
 import Clicker    from './Clicker';
+import { Viewer } from '../middlewares/traveler';
 
 class App extends Flux {
 
@@ -14,7 +15,13 @@ class App extends Flux {
   }
 
   render (state) {
-    return <Clicker {...state}/>;
+    return (
+      <div>
+        <Clicker {...state}/>
+        <Viewer />
+      </div>
+    );
+
   }
 
 }
