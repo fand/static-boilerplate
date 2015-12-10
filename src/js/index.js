@@ -1,55 +1,19 @@
-import * as React from "react";
-import { Flux, Component } from "flumpt";
+import * as React from 'react';
 import { render } from "react-dom";
+import App from './components/App';
 
-class MyComponent extends Component {
-  componentDidMount() {
-    this.dispatch("increment");
-  }
-  render() {
-    return (
-      <div>
-        {this.props.counter}
-        <button onClick={() => this.dispatch("increment")}>increment</button>
-      </div>
-    );
-  }
-}
-
-class App extends Flux {
-  subscribe() { // `subscribe` is called once in constructor
-    this.on("increment", () => {
-      this.update(({count}) => {
-        return {count: count + 1}; // return next state
-      });
-    });
-  }
-  render(state) {
-    return <MyComponent {...state}/>;
-  }
-}
+import logger from './middlewares/logger';
 
 // Setup renderer
 const app = new App({
   renderer: el => {
     render(el, document.querySelector("#root"));
   },
-  initialState: {count: 0},
+  initialState: { count: 0 },
   middlewares: [
-    // logger
-    //   it may get state before unwrap promise
-    (state) => {
-      console.log(state);
-      return state
-    }
+    logger,
   ]
 });
 
-app.on(":start-updating", () => {
-  // overlay ui lock
-});
-app.on(":end-updating", () => {
-  // hide ui lock
-});
-
-app.update(_initialState => ({count: 1})) // it fires rendering
+// Fire renderer
+app.update(x => x);
