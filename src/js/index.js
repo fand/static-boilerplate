@@ -9,7 +9,10 @@ const app = new App({
   renderer: el => {
     render(el, document.querySelector("#root"));
   },
-  initialState: { count: 0 },
+  initialState: {
+    count  : 0,
+    button : 'click me',
+  },
   middlewares: [
     logger,
   ]

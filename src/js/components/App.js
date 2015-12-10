@@ -6,8 +6,9 @@ class App extends Flux {
 
   subscribe () {
     this.on('increment', () => {
-      this.update(({ count }) => ({
+      this.update(({ count, button }) => ({
         count : count + 1,
+        button,
       }));
     });
   }
