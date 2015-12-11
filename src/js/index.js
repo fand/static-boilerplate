@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import App from './components/App';
 
 import logger from './middlewares/logger';
-import { traveler } from './middlewares/traveler';
+import { traveler, bindApp } from './middlewares/traveler';
 
 // Setup renderer
 const app = new App({
@@ -15,10 +15,12 @@ const app = new App({
     button : 'click me',
   },
   middlewares: [
-    logger,
     traveler,
+    logger,
   ]
 });
+
+bindApp(app);
 
 // Fire renderer
 app.update(x => x);
